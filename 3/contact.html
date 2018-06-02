@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact</title>
+    <!-- CSS Section -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./Content/app.css">
+</head>
+<body>
+    <!-- Main Nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Dey  <img src="./Assets/logo.png" width="50" height="50" alt=""> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./index.html"><i class="fa fa-male"></i></i> Me </a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="./contact.html"><i class="fa fa-envelope-open"></i> Contact Me <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./project.html"><i class="fa fa-play"></i> Projects </a>
+                    </li>
+                </ul>
+              </div>
+            </nav>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h1 class="display-4">contact me</h1>
+        <hr class="my-4">
+      <!--form -->
+      <form>
+            <div class="form-group">
+            <div class="row">
+                    <div class="col">
+                        <label for="FirstName">your first name</label>
+                      <input type="text" class="form-control" name="FirstName">
+                    </div>
+                    <div class="col">
+                        <label for="LastName">your last name</label>
+                      <input type="text" class="form-control" id"LastName">
+                    </div>
+                  </div>
+                  </div>
+
+            <div class="form-group">
+              <label for="EmailAddress">your email address</label>
+              <input type="email" class="form-control form-control-lg" id="EmailAddress" name="EmailAddress" required>
+            </div>
+
+            <div class="form-group">
+              <label for="Message">your message</label>
+              <textarea class="form-control form-control-lg" id="Message" name="Message" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" href="./index.html">Send</button>
+</form>
+    </div>
+    <!-- JavaScript Section -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./Scripts/app.js"></script>
+</body>
+</html>
