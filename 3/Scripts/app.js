@@ -2,6 +2,7 @@
 
 // IIFE - Immediately Invoked Function Expression
 // anonymous self executing function
+
 (function () {
     "use strict"
     let title = document.title;
