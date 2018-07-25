@@ -4,6 +4,13 @@
 // anonymous self executing function
 
 (function () {
+
+    function jsonFileReadByAjax(){
+
+    }
+
+
+    
     "use strict"
     let title = document.title;
     switch (title) {
