@@ -6,21 +6,28 @@
 (function() {
   function Start() {
     console.log("[#2] I am inside start funcation");
-
+//=====================sample=================================
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "/bar/foo.txt", true);
+xhr.onload = function (e) {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    } else {
+      console.error(xhr.statusText);
+    }
+  }
+};
+xhr.onerror = function (e) {
+  console.error(xhr.statusText);
+};
+xhr.send(null);
+//---------------------end of sample==========================
     let httpRequest = new XMLHttpRequest();
     httpRequest.open("get", ".5/paragraphs.json");
     httpRequest.send(null);
 
-    httpRequest.addEventListener("readystatechange", Start(){
-      if(httpRequest.status === 200){
-        if(httpRequest.readyState === 4){
-          console.log("[#3.1.1] I am inside the if statemant located at start/jsonFileReadByAjax/iAmReady funcition");
-          let jsonFile = JSON.parse(httpRequest.responseText);
-          document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
-          document.getElementById("idOfProjectTextk").innerHTML = jsonFile.paraFromJson[2];
-        }
-      }
-    }
+    httpRequest.addEventListener("readystatechange", 
   
   )
 /*
