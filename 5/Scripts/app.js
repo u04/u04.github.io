@@ -5,25 +5,26 @@
 "use strict";
 (function() {
   function Start() {
-    console.log("app startred");
+    console.log("[#2] I am inside start funcation");
+
     let httpRequest = new XMLHttpRequest();
     httpRequest.open("get", ".5/paragraphs.json");
     httpRequest.send(null);
 
 
     function jsonFileReadByAjax() {
-      console.log("started function jsonFileReadByAjax");
+      console.log("[#3] I am inside jsonFileReadByAjax function");
       //let httpRequest = new XMLHttpRequest();
       httpRequest.onreadystatechange = iAmReady;
 
       function iAmReady() {
+        console.log("[#3.1] I am inside iAmReady function which is inside the jsonFileReadByAjax function");
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-          console.log("using json before redbyAjaxFuncation");
+          console.log("[#3.1.1] I am inside the if statemant located at start/jsonFileReadByAjax/iAmReady funcition");
           let jsonFile = JSON.parse(httpRequest.responseText);
           document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
           document.getElementById("idOfProjectTextk").innerHTML = jsonFile.paraFromJson[2];
         }
-        console.log("botto");
         //httpRequest.open("get", ".5/paragraphs.json");
         //httpRequest.send(null);
       }
@@ -41,7 +42,7 @@
         titleMe.textContent = titleMeText;
         break;
       case "Projects":
-        console.log("switching");
+      console.log("I am inside the switch saatement for the projects page");
         jsonFileReadByAjax();
       /*
         console.log("in project of switch");
@@ -86,4 +87,5 @@
   }
 
   window.addEventListener("load", Start);
+  console.log("[#1] accessing Start funcation after page loades");
 })();
