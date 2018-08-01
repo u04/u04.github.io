@@ -11,12 +11,23 @@
     httpRequest.open("get", ".5/paragraphs.json");
     httpRequest.send(null);
 
-
+    httpRequest.addEventListener("readystatechange", Start(){
+      if(httpRequest.status === 200){
+        if(httpRequest.readyState === 4){
+          console.log("[#3.1.1] I am inside the if statemant located at start/jsonFileReadByAjax/iAmReady funcition");
+          let jsonFile = JSON.parse(httpRequest.responseText);
+          document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
+          document.getElementById("idOfProjectTextk").innerHTML = jsonFile.paraFromJson[2];
+        }
+      }
+    }
+  
+  )
+/*
     function jsonFileReadByAjax() {
       console.log("[#3] I am inside jsonFileReadByAjax function");
       //let httpRequest = new XMLHttpRequest();
       httpRequest.onreadystatechange = iAmReady;
-
       function iAmReady() {
         console.log("[#3.1] I am inside iAmReady function which is inside the jsonFileReadByAjax function");
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
@@ -29,6 +40,7 @@
         //httpRequest.send(null);
       }
     }
+    */
 
     let title = document.title;
     switch (title) {
