@@ -8,11 +8,17 @@
     console.log("[#2] I am inside start funcation");
 //=====================sample=================================
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "/bar/foo.txt", true);
+xhr.open("GET", "paragraphs.json", true);
 xhr.onload = function (e) {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      console.log(xhr.responseText);
+      
+      let jsonFile = JSON.parse(xhr.responseText);
+          document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
+          document.getElementById("idOfProjectTextk").innerHTML = jsonFile.paraFromJson[2];
+
+
+
     } else {
       console.error(xhr.statusText);
     }
@@ -23,13 +29,8 @@ xhr.onerror = function (e) {
 };
 xhr.send(null);
 //---------------------end of sample==========================
-    let httpRequest = new XMLHttpRequest();
-    httpRequest.open("get", ".5/paragraphs.json");
-    httpRequest.send(null);
 
-    httpRequest.addEventListener("readystatechange", 
-  
-  )
+
 /*
     function jsonFileReadByAjax() {
       console.log("[#3] I am inside jsonFileReadByAjax function");
@@ -62,7 +63,7 @@ xhr.send(null);
         break;
       case "Projects":
       console.log("I am inside the switch saatement for the projects page");
-        jsonFileReadByAjax();
+        //jsonFileReadByAjax();
       /*
         console.log("in project of switch");
         let proj = document.getElementById("idOfProjectText");
