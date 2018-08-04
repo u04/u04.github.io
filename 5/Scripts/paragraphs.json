@@ -1,0 +1,5 @@
+{
+    "paraFromJson": ["This is where text for paragraph 1 will go", "This is a sentence.", "English is the language"],
+    "paraFromJson2": ["me", "another paragraph so I can get it using loop"],
+    "paraInMainPage": ["The year is 2018.", "title goes here"]
+}

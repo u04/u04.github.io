@@ -3,90 +3,134 @@
 // IIFE - Immediately Invoked Function Expression
 // anonymous self executing function
 "use strict";
-(function() {
+(function () {
   function Start() {
     console.log("[#2] I am inside start funcation");
-//=====================sample=================================
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "paragraphs.json", true);
-xhr.onload = function (e) {
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-      
-      let jsonFile = JSON.parse(xhr.responseText);
-          document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
-          document.getElementById("idOfProjectTextk").innerHTML = jsonFile.paraFromJson[2];
-
-
-
-    } else {
-      console.error(xhr.statusText);
-    }
-  }
-};
-xhr.onerror = function (e) {
-  console.error(xhr.statusText);
-};
-xhr.send(null);
-//---------------------end of sample==========================
-
-
-/*
-    function jsonFileReadByAjax() {
-      console.log("[#3] I am inside jsonFileReadByAjax function");
-      //let httpRequest = new XMLHttpRequest();
-      httpRequest.onreadystatechange = iAmReady;
-      function iAmReady() {
-        console.log("[#3.1] I am inside iAmReady function which is inside the jsonFileReadByAjax function");
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-          console.log("[#3.1.1] I am inside the if statemant located at start/jsonFileReadByAjax/iAmReady funcition");
-          let jsonFile = JSON.parse(httpRequest.responseText);
-          document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
-          document.getElementById("idOfProjectTextk").innerHTML = jsonFile.paraFromJson[2];
-        }
-        //httpRequest.open("get", ".5/paragraphs.json");
-        //httpRequest.send(null);
-      }
-    }
-    */
 
     let title = document.title;
     switch (title) {
       case "About Me":
-        let paragraphMe = document.getElementById("textInMainPage");
-        let myTextAboutMe =
-          "I am Dey. I don't want to write my full name here to make it harder for someone serching the web to link this page to me. Right now my mission is to make this webpage.";
-        paragraphMe.textContent = myTextAboutMe;
-        let titleMe = document.getElementById("meInMainPage");
-        let titleMeText = "me";
-        titleMe.textContent = titleMeText;
+ //====================index text===============================================================================
+ let XHR = new XMLHttpRequest();       
+        XHR.addEventListener("readystatechange", function () {
+          if (XHR.status === 200) {
+            if (XHR.readyState === 4) {
+              let jsonFile = JSON.parse(this.responseText);
+              document.getElementById("meInMainPage").innerHTML = jsonFile.paraInMainPage[0];
+              document.getElementById("textInMainPage").innerHTML = jsonFile.paraInMainPage[1];
+            }
+          }
+        });
+        XHR.open("GET", "Scripts/paragraphs.json");
+        XHR.send();
+//=======================index header=========================================================================================
+let XHR2 = new XMLHttpRequest();       
+    let target2 = document.getElementsByTagName("header")[0];
+    
+    XHR2.addEventListener("readystatechange", function(){
+      if(this.status === 200) {
+        if(this.readyState === 4)  {
+          target2.innerHTML = this.responseText;
+          setActiveNavLink();
+        }
+      }
+    });
+    XHR2.open("GET", "Views/partials/header.html");
+    XHR2.send();
+//==========================index footer======================================================================================
+let XHR3 = new XMLHttpRequest();       
+    let target3 = document.getElementsByTagName("footer")[0];
+    
+    XHR3.addEventListener("readystatechange", function(){
+      if(this.status === 200) {
+        if(this.readyState === 4)  {
+          target3.innerHTML = this.responseText;
+          setActiveNavLink();
+        }
+      }
+    });
+    XHR3.open("GET", "Views/partials/footer.html");
+    XHR3.send();
+//======================================================================================================================
         break;
       case "Projects":
-      console.log("I am inside the switch saatement for the projects page");
-        //jsonFileReadByAjax();
-      /*
-        console.log("in project of switch");
-        let proj = document.getElementById("idOfProjectText");
-        proj.textContent = usingJson();
+        console.log("I am inside the switch saatement for the projects page");
+//=========================project text============================================================================
+let XHR4 = new XMLHttpRequest();       
+        XHR4.addEventListener("readystatechange", function () {
+          if (XHR4.status === 200) {
+            if (XHR4.readyState === 4) {
+              let jsonFile = JSON.parse(this.responseText);
+              document.getElementById("idOfProjectText").innerHTML = jsonFile.paraFromJson[0];
+              document.getElementById("idOfProjectTextz").innerHTML = jsonFile.paraFromJson[1];
+              document.getElementById("idOfProjectTextLast").innerHTML = jsonFile.paraFromJson[2];
+            }
+          }
+        });
+        XHR4.open("GET", "Scripts/paragraphs.json");
+        XHR4.send();
+//=======================project header=========================================================================================
+let target5 = document.getElementsByTagName("header")[0];
+let XHR5 = new XMLHttpRequest();
+XHR5.addEventListener("readystatechange", function(){
+  if(this.status === 200) {
+    if(this.readyState === 4)  {
+      target5.innerHTML = this.responseText;
+      setActiveNavLink();
+    }
+  }
+});
+XHR5.open("GET", "Views/partials/header.html");
+XHR5.send();
+//==========================project footer======================================================================================
+let target6 = document.getElementsByTagName("footer")[0];
+let XHR6 = new XMLHttpRequest();
+XHR6.addEventListener("readystatechange", function(){
+  if(this.status === 200) {
+    if(this.readyState === 4)  {
+      target6.innerHTML = this.responseText;
+      setActiveNavLink();
+    }
+  }
+});
+XHR6.open("GET", "Views/partials/footer.html");
+XHR6.send();
+        break;
 
-        /*
-            let proj = document.getElementById("idOfProjectText");
-            let projText = "having a github account";
-            proj.textContent = projText;
-            let projz = document.getElementById("idOfProjectTextz");
-            let textz = "Hooking onto HTMLElements";
-            projz.textContent = textz;
-            let projzk = document.getElementById("idOfProjectTextk");
-            let textzf = "Hooking onto HTMLElements";
-            projzk.textContent = textzf;
-            break;
-*/
       case "Contact":
+      //=======================contact header=========================================================================================
+    let target7 = document.getElementsByTagName("header")[0];
+    let XHR7 = new XMLHttpRequest();
+    XHR7.addEventListener("readystatechange", function(){
+      if(this.status === 200) {
+        if(this.readyState === 4)  {
+          target7.innerHTML = this.responseText;
+          setActiveNavLink();
+        }
+      }
+    });
+    XHR7.open("GET", "Views/partials/header.html");
+    XHR7.send();
+//==========================contact footer======================================================================================
+    let target8 = document.getElementsByTagName("footer")[0];
+    let XHR8 = new XMLHttpRequest();
+    XHR8.addEventListener("readystatechange", function(){
+      if(this.status === 200) {
+        if(this.readyState === 4)  {
+          target8.innerHTML = this.responseText;
+          setActiveNavLink();
+        }
+      }
+    });
+    XHR8.open("GET", "Views/partials/footer.html");
+    XHR8.send();
+
         var fname = document.getElementById("FirstName");
         var lname = document.getElementById("LastName");
         var email = document.getElementById("EmailAddress");
         var pnumber = document.getElementById("PhoneNumber");
         var message = document.getElementById("Message");
+
         function DisplayTextToConsole() {
           console.log("first name:" + fname.value);
           console.log("last nsme: " + lname.value);
@@ -94,6 +138,7 @@ xhr.send(null);
           console.log("phone number: " + pnumber.value);
           console.log("message: " + message.value);
         }
+
         function DirectToHomepage() {
           location.href = "./index.html";
         }
